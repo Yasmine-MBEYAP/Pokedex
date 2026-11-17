@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche Pokémon</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/pokedex.js" defer></script>
+    <script src="js/details.js" defer></script>
+</head>
+<body>
+
+    <header class="barre">
+        <h1>MON POKÉDEX</h1>
+        <nav>
+            <a href="index.html">Accueil</a>
+        </nav>
+    </header>
+
+    <main style="max-width: 900px; margin: 40px auto; padding: 0 20px;">
+    <article class="carte-pokemon">
+        <div class="fiche-layout">
+            <div class="fiche-gauche">
+                <img id="image" src="" alt="">
+            </div>
+            
+            <div class="fiche-droite">
+                <p id="numero"></p>
+                <h1 id="nom"></h1>
+                <span id="type" class="type-badge"></span>
+                <p id="taille"></p>
+                <p id="poids"></p>
+
+                <section class="statistiques">
+                    <h2>Statistiques</h2>
+                    <p>PV</p>
+                    <div class="barre-stat">
+                        <div id="pv" class="niveau pv"></div>
+                    </div>
+                    <p>Attaque</p>
+                    <div class="barre-stat">
+                        <div id="attaque" class="niveau attaque"></div>
+                    </div>
+                    <p>Défense</p>
+                    <div class="barre-stat">
+                        <div id="defense" class="niveau defense"></div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="index.html" class="btn-retour">Retour au Pokédex</a>
+        </div>
+    </article>
+</main>
+
+</body>
+</html>

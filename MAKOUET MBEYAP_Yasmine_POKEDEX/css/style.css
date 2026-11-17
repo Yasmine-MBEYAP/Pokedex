@@ -1,0 +1,398 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 110px 30px 40px;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #101426, #1c2140, #101426);
+    color: white;
+    min-height: 100vh;
+}
+
+.barre {
+    background: #101426;
+    color: white;
+    padding: 18px 40px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 1px solid #444c75;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+}
+
+.barre h1 {
+    font-size: 24px;
+    letter-spacing: 3px;
+}
+
+.barre nav {
+    display: flex;
+    gap: 25px;
+}
+
+.barre a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.barre a:hover {
+    color: #a78bfa;
+}
+
+main > h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+}
+
+.liste-pokemon {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+.carte-pokemon {
+    --accent: #8b5cf6;
+
+    position: relative;
+    overflow: hidden;
+
+    background: linear-gradient(145deg, #252b4b, #171c35);
+    padding: 22px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    text-align: center;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+
+    transition: transform 0.35s, box-shadow 0.35s;
+}
+
+/* Pour avoir les couleurs différente selon la position de la carte */
+
+.carte-pokemon:nth-child(1),
+.carte-pokemon:nth-child(11) {
+    --accent: #facc15;
+}
+
+.carte-pokemon:nth-child(2),
+.carte-pokemon:nth-child(4) {
+    --accent: #a78bfa;
+}
+
+.carte-pokemon:nth-child(3) {
+    --accent: #d6a56d;
+}
+
+.carte-pokemon:nth-child(5),
+.carte-pokemon:nth-child(10),
+.carte-pokemon:nth-child(12) {
+    --accent: #38bdf8;
+}
+
+.carte-pokemon:nth-child(6),
+.carte-pokemon:nth-child(8) {
+    --accent: #fb7185;
+}
+
+.carte-pokemon:nth-child(7) {
+    --accent: #c084fc;
+}
+
+.carte-pokemon:nth-child(9) {
+    --accent: #4ade80;
+}
+
+/* Pour mes effets lumineux */
+
+.carte-pokemon::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at top,
+        var(--accent),
+        transparent 65%
+    );
+    opacity: 0.12;
+    pointer-events: none;
+}
+
+.carte-pokemon:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 12px 35px var(--accent);
+    border-color: var(--accent);
+}
+
+#pokemon-image {
+    width: 250px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 20px auto;
+}
+
+.carte-pokemon img {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: 220px;
+    height: 190px;
+    object-fit: contain;
+
+    display: block;
+    margin: 0 auto 15px;
+
+    filter: drop-shadow(0 5px 12px rgba(0, 0, 0, 0.5));
+
+    transition: transform 0.35s;
+}
+
+.carte-pokemon:hover img {
+    transform: scale(1.12);
+}
+
+/* Nom du Pokémon */
+
+.carte-pokemon h2 {
+    position: relative;
+    z-index: 1;
+
+    color: white;
+    font-size: 23px;
+    margin: 10px 0;
+}
+
+/* Numéro et type */
+
+.carte-pokemon p {
+    position: relative;
+    z-index: 1;
+
+    color: #c5c9df;
+    margin: 8px 0;
+}
+
+/* Bouton détails */
+
+.carte-pokemon a {
+    position: relative;
+    z-index: 1;
+
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+
+    color: white;
+    background: var(--accent);
+    text-decoration: none;
+    font-weight: bold;
+
+    border-radius: 25px;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.carte-pokemon a:hover {
+    transform: scale(1.07);
+    filter: brightness(1.15);
+}
+
+/* STATISTIQUES */
+
+.barre-stat {
+    background-color: #343a56;
+    height: 12px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.niveau {
+    height: 100%;
+    border-radius: 10px;
+}
+
+.pv {
+    width: 35%;
+    background-color: #4caf50;
+}
+
+.attaque {
+    width: 55%;
+    background-color: #f44336;
+}
+
+.defense {
+    width: 40%;
+    background-color: #2196f3;
+}
+
+.statistiques {
+    max-width: 600px;
+    margin: 30px auto;
+}
+
+.statistiques h2 {
+    text-align: center;
+}
+
+
+/* BARRE DE RECHERCHE */
+
+.recherche {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 0 auto 35px;
+    max-width: 500px;
+}
+
+.recherche input {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 15px;
+    border: 1px solid #444c75;
+    border-radius: 25px;
+    background: #252b4b;
+    color: white;
+    font-size: 15px;
+    outline: none;
+}
+
+.recherche input::placeholder {
+    color: #c5c9df;
+}
+
+.recherche input:focus {
+    border-color: #a78bfa;
+}
+
+.recherche button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    background: #8b5cf6;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.recherche button:hover {
+    transform: scale(1.05);
+    filter: brightness(1.15);
+}
+
+
+@media (max-width: 800px) {
+    .liste-pokemon {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 550px) {
+    body {
+        padding: 100px 15px 30px;
+    }
+
+    .recherche {
+    width: 100%;
+    gap: 6px;
+}
+
+.recherche button {
+    padding: 12px 14px;
+}
+
+    .barre {
+        padding: 15px 20px;
+    }
+
+    .barre h1 {
+        font-size: 18px;
+    }
+
+    .liste-pokemon {
+        grid-template-columns: 1fr;
+    }
+}
+.btn-retour {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 10px 20px;
+    background: #8b5cf6;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 25px;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.btn-retour:hover {
+    transform: scale(1.05);
+    filter: brightness(1.15);
+}
+
+/* pour gérer l'affichage cote à cote sur l'écran large et l'empilement sur mobile */
+.fiche-layout {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    text-align: left;
+}
+
+.fiche-gauche {
+    flex: 1;
+    background: linear-gradient(145deg, #2b335a, #1a203c);
+    border-radius: 15px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fiche-gauche img {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    object-fit: contain;
+}
+
+.fiche-droite {
+    flex: 1.2;
+}
+
+.type-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 20px;
+    background: #8b5cf6;
+    color: white;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+@media (max-width: 768px) {
+    .fiche-layout {
+        flex-direction: column;
+    }
+}
